@@ -121,7 +121,7 @@ const getSingleArticle = async (req, res) => {
   }
 
   if (article.state === "draft") {
-    return res.redirect("/posts");
+    return res.redirect("/api/v1/posts");
   }
   res.status(StatusCodes.OK).json({ status: "success", article });
 };
