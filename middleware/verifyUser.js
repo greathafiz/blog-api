@@ -7,7 +7,7 @@ const verifyUser = async (req, res, next) => {
     !req.headers.authorization ||
     !req.headers.authorization.startsWith("Bearer")
   ) {
-    throw new UnauthorizedError("Token not found");
+    throw new UnauthorizedError("Authentication failed. You are not authorized to access this route");
   }
 
   const token = req.headers.authorization.split(" ")[1];

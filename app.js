@@ -8,7 +8,6 @@ import { articleRouter } from "./routers/articleRouter.js";
 import { commentRouter } from "./routers/commentRouter.js";
 import errorHandlerMiddleware from "./middleware/error-handler.js";
 import notFoundMiddleware from "./middleware/not-found.js";
-import verifyUser from "./middleware/verifyUser.js";
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
@@ -18,7 +17,7 @@ app.get("/", (req, res) => res.send(`<h3>My Blogging Platform</h3>`));
 
 app.use("/api/v1", authRouter);
 app.use("/api/v1", articleRouter);
-app.use("/api/v1", verifyUser, commentRouter);
+app.use("/api/v1", commentRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
